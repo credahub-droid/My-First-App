@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>My First App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 20px;
+      background: #f3f4f6;
+    }
+    .app {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+    input { padding: 10px; }
+    button {
+      padding: 10px;
+      cursor: pointer;
+    }
+    li {
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>My Task Tracker</h1>
+    <p>Add a task to your list.</p>
+
+    <input id="task" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="tasks"></ul>
+  </div>
+
+  <script>
+    const input = document.getElementById("task");
+    const list = document.getElementById("tasks");
+
+    function addTask() {
+      const value = input.value.trim();
+      if (!value) return;
+
+      const item = document.createElement("li");
+      item.textContent = value + " ";
+
+      const remove = document.createElement("button");
+      remove.textContent = "Delete";
+      remove.onclick = () => item.remove();
+
+      item.appendChild(remove);
+      list.appendChild(item);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
